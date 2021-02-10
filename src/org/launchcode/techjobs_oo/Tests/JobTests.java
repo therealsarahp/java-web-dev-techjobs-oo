@@ -35,4 +35,17 @@ public class JobTests {
         assertEquals(jobTestOne.getCoreCompetency().getValue(), "Persistence");
     }
 
+    @Test
+    public void testJobsForEquality(){
+        Employer employerTest = new Employer("Employer");
+        Location locationTest = new Location("Location");
+        PositionType positionTest = new PositionType("Position Type");
+        CoreCompetency competencyTest = new CoreCompetency("Core Competency");
+        Job jobEqualityOne = new Job("Job Equality", employerTest, locationTest, positionTest, competencyTest);
+        Job jobEqualityTwo = new Job("Job Equality", employerTest, locationTest, positionTest, competencyTest);
+
+        assertFalse(jobEqualityOne.equals(jobEqualityTwo));
+
+    }
+
 }
