@@ -2,9 +2,9 @@ package org.launchcode.techjobs_oo.Tests;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.launchcode.techjobs_oo.Job;
+import org.launchcode.techjobs_oo.*;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class JobTests {
 
@@ -20,6 +20,19 @@ public class JobTests {
     @Test
     public void testEmptyConstructor() {
         assertFalse(jobOneEmpty.getId() == jobTwoEmpty.getId());
+    }
+
+    @Test
+    public void testJobConstructorSetsAllFields(){
+        Job jobTestOne = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue(jobTestOne.getEmployer() instanceof Employer);
+        assertEquals(jobTestOne.getEmployer().getValue(), "ACME");
+        assertTrue(jobTestOne.getLocation() instanceof Location);
+        assertEquals(jobTestOne.getLocation().getValue(), "Desert");
+        assertTrue(jobTestOne.getPositionType() instanceof PositionType);
+        assertEquals(jobTestOne.getPositionType().getValue(), "Quality control");
+        assertTrue(jobTestOne.getCoreCompetency() instanceof CoreCompetency);
+        assertEquals(jobTestOne.getCoreCompetency().getValue(), "Persistence");
     }
 
 }
