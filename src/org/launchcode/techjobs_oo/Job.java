@@ -29,7 +29,21 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    // custom equals and hashcode methods
+    // custom equals and hashcode methods and toString
+
+    @Override
+    public String toString(){
+        String beginningString = "\n";
+        String idString =  "ID:"+ this.getId() + "\n";
+        String nameString = "NAME:"+this.getName() + "\n";
+        String employerString = "EMPLOYER: " +this.getEmployer() + "\n";
+        String locationString = "LOCATION: " + this.getLocation() + "\n";
+        String positionString = "POSITION TYPE: " + this.getPositionType() + "\n";
+        String competencyString = "CORE COMPETENCY: " + this.getCoreCompetency();
+        String endingString = "\n";
+
+        return beginningString + idString + nameString + employerString + locationString + positionString + competencyString + endingString;
+    }
 
     @Override
     public boolean equals(Object o) {
