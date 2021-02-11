@@ -1,5 +1,7 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Job {
@@ -33,16 +35,30 @@ public class Job {
 
     @Override
     public String toString(){
-        String beginningString = "\n";
-        String idString =  "ID:"+ this.getId() + "\n";
-        String nameString = "NAME:"+this.getName() + "\n";
-        String employerString = "EMPLOYER: " +this.getEmployer() + "\n";
-        String locationString = "LOCATION: " + this.getLocation() + "\n";
-        String positionString = "POSITION TYPE: " + this.getPositionType() + "\n";
-        String competencyString = "CORE COMPETENCY: " + this.getCoreCompetency();
-        String endingString = "\n";
+        String output = "";
+        ArrayList<String> labelsArray = new ArrayList<String>();
+        labelsArray.add("NAME: ");
+        labelsArray.add("EMPLOYER: ");
+        labelsArray.add("LOCATION: ");
+        labelsArray.add("POSITION TYPE: ");
+        labelsArray.add("CORE COMPETENCY: ");
 
-        return beginningString + idString + nameString + employerString + locationString + positionString + competencyString + endingString;
+        ArrayList<String> valuesArray = new ArrayList();
+        valuesArray.add(this.getName());
+        valuesArray.add(this.getEmployer().getValue());
+        valuesArray.add(this.getLocation().getValue());
+        valuesArray.add(this.getPositionType().getValue());
+        valuesArray.add(this.getCoreCompetency().getValue());
+
+        for (int i = 0; i<labelsArray.size(); i++) {
+            if (valuesArray.get(i).isBlank()) {
+                output += labelsArray.get(i) + "Data Not Available" + "\n";
+            } else {
+                output += labelsArray.get(i) + valuesArray.get(i) + "\n";
+            }
+        }
+
+        return  "\n"+ "ID: " + this.getId() + "\n" + output;
     }
 
     @Override
