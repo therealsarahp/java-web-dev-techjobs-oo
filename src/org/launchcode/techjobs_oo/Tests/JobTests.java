@@ -11,17 +11,19 @@ public class JobTests {
     Job jobOneEmpty;
     Job jobTwoEmpty;
     Job jobTestOne;
+    Job jobTestTwo;
 
     @Before
     public void createJobObjects() {
          jobOneEmpty = new Job();
          jobTwoEmpty = new Job();
          jobTestOne = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+         jobTestTwo = new Job("Ice cream taster", new Employer(""), new Location("Home"), new PositionType("UX"), new CoreCompetency("Taste"));
 
     }
 
     @Test
-    public void testEmptyConstructor() {
+    public void testEmptyConstructor(){
         assertFalse(jobOneEmpty.getId() == jobTwoEmpty.getId());
     }
 
@@ -52,7 +54,12 @@ public class JobTests {
 
     @Test
     public void testJobtoStringMethod(){
+        Job jobTestToString = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String toStringTest= "\nID: " + jobTestToString.getId() +"\nNAME: Product tester\nEMPLOYER: ACME\nLOCATION: Desert\nPOSITION TYPE: Quality control\nCORE COMPETENCY: Persistence\n";
+
         assertTrue(jobTestOne.toString().contains("\n"));
+        assertEquals(jobTestToString.toString(), toStringTest);
+        assertTrue(jobTestTwo.toString().contains("Data Not Available"));
 
     }
 
